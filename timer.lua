@@ -46,7 +46,7 @@ function timer.Update(dt)
 				if v.repetitions ~= 0 and v.repetitionsDone >= v.repetitions then
 					timer.namedTimers[k] = nil
 				else
-					v.delayTimer = 0
+					v.delayTimer -= v.delay
 				end
 			end
 		end
