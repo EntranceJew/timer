@@ -46,16 +46,16 @@ function timer.Update(dt)
 				if v.repetitions ~= 0 and v.repetitionsDone >= v.repetitions then
 					timer.namedTimers[k] = nil
 				else
-					v.delayTimer -= v.delay
+					v.delayTimer = v.delayTimer - v.delay
 				end
 			end
 		end
 	end
-	for k,v in pairs(timer.simpleTimers) do
+	for k,v in ipairs(timer.simpleTimers) do
 		v.delayTimer = v.delayTimer + dt
 		if v.delayTimer >= v.delay then
 			v.func()
-			timer.simpleTimers[k]=nil
+			table.remove(timer.simpleTimers, k)
 		end
 	end
 end --[[internal: go through all functions and do whatever is done]]
