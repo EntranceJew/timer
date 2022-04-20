@@ -51,11 +51,11 @@ function timer.Update(dt)
 			end
 		end
 	end
-	for k,v in ipairs(timer.simpleTimers) do
+	for k,v in pairs(timer.simpleTimers) do
 		v.delayTimer = v.delayTimer + dt
 		if v.delayTimer >= v.delay then
 			v.func()
-			table.remove(timer.simpleTimers, k)
+			timer.simpleTimers[k] = nil
 		end
 	end
 end --[[internal: go through all functions and do whatever is done]]
